@@ -89,7 +89,10 @@
 
 - (FlutterError*)onCancelWithArguments:(id)arguments {
   [[Reachability reachabilityForInternetConnection] stopNotifier];
-  [[NSNotificationCenter defaultCenter] removeObserver:self];
+//  [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:kReachabilityChangedNotification
+                                                  object:nil];
   _eventSink = nil;
   return nil;
 }
